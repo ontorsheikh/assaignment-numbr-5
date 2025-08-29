@@ -86,5 +86,33 @@ function getCurrentTime() {
 
 
 
+// added copy systems
+
+
+
+let copied = 0;
+
+const copiedCount = document.getElementById('copied-count')
+copiedCount.innerText = copied;
+
+const copyButton = document.querySelectorAll('.card .copy-button');
+
+for (const copy of copyButton) {
+  copy.addEventListener('click', (e)=>{
+    const card = e.currentTarget.closest(".card")
+    const number = card.querySelector(".number").innerText;
+
+    navigator.clipboard.writeText(number);
+
+    alert('Number is copied: ' + number)
+
+    copied++;
+    copiedCount.innerText = copied;
+
+  })
+}
+
+
+
 
 
