@@ -17,7 +17,7 @@ for (const heart of heartClick) {
 
 
 
-// Call button
+// Call systems
 
 let coinCount = 100;
 
@@ -55,6 +55,34 @@ for (const call of callButton) {
 
   })
 }
+
+
+
+// History systems
+
+document.querySelector('.clear').addEventListener('click', ()=>{
+  document.querySelector('.history').innerHTML = '';
+})
+
+function getCurrentTime() {
+
+  const now = new Date();
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes().toString().padStart(2, '0');
+  let seconds = now.getSeconds().toString().padStart(2, '0');
+  let amPm = hours >= 12 ? 'PM' : 'AM';
+
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  hours = hours.toString().padStart(2, '0')
+
+  let final = `${hours}:${minutes}:${seconds} ${amPm}`;
+
+  return final;  
+
+}
+
 
 
 
