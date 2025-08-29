@@ -14,3 +14,49 @@ for (const heart of heartClick) {
 
 
 
+
+
+
+// Call button
+
+let coinCount = 100;
+
+document.getElementById('coin-count').innerText = coinCount;
+
+const callButton = document.querySelectorAll('.card .call-button');
+
+for (const call of callButton) {
+  call.addEventListener('click', function(e){
+    const card = e.currentTarget.closest(".card");
+
+    if (coinCount >= 20) {
+      const title = card.querySelector(".title").innerText;
+      const subTitle = card.querySelector(".sub-title").innerText;
+      const number = card.querySelector(".number").innerText;
+
+      const historyCard = `
+      <div class="bg-gray-100 px-3 lg:px-2 py-2 rounded-lg flex justify-between items-center">
+            <div class="">
+              <h3 class="text-lg font-semibold">${title}</h3>
+              <p class="text-lg text-gray-500">${number}</p>
+            </div>
+            <span class="font-medium">${getCurrentTime()}</span>
+          </div>
+      `;
+
+      document.querySelector('.history').innerHTML += historyCard;
+
+      alert(`📞 Calling ${subTitle} ${number}...`);
+      coinCount -= 20;
+      document.getElementById('coin-count').innerHTML = coinCount;
+    }else{
+      alert("❌ You don't have enough coins. You need at least 20 coins to make a call.")
+    }
+
+  })
+}
+
+
+
+
+
